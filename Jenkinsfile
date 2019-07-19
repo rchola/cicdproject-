@@ -29,7 +29,7 @@ pipeline {
                 sh 'mvn install'
             }
         }
-        stage('Build Docker Image') {
+        stage('Build Docker Image Prod') {
             when {
                 branch 'master'
             }
@@ -37,12 +37,12 @@ pipeline {
                 script {
                     app = docker.build(DOCKER_IMAGE_NAME_PROD)
                     app.inside {
-                        sh 'Compilado produção'
+                        sh 'Compilado producao'
                     }
                 }
             }
         }
-        stage('Build Docker Image') {
+        stage('Build Docker Image Homolog') {
             when {
                 branch 'dev'
             }
