@@ -19,7 +19,7 @@ pipeline {
         stage('Clean') {
                 steps {
                     echo 'Running build automation'
-                    sh 'mvn install'
+                    sh 'mvn clean'
                 }
             }
         stage('Build') {
