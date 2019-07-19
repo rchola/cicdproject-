@@ -5,7 +5,8 @@ pipeline {
         jdk 'jdk8'
     }
     environment {
-        DOCKER_IMAGE_NAME = "cicdproject-docker"
+        DOCKER_IMAGE_NAME_HOMOLOG = "cicdproject-docker-homolog"
+        DOCKER_IMAGE_NAME_PROD = "cicdproject-docker-prod"
     }
     stages {
         stage ('Initialize') {
@@ -34,9 +35,22 @@ pipeline {
             }
             steps {
                 script {
-                    app = docker.build(DOCKER_IMAGE_NAME)
+                    app = docker.build(DOCKER_IMAGE_NAME_PROD)
                     app.inside {
-                        sh 'echo Hello, World!'
+                        sh 'Compilado produção'
+                    }
+                }
+            }
+        }
+        stage('Build Docker Image') {
+            when {
+                branch 'dev'
+            }
+            steps {
+                script {
+                    app = docker.build(DOCKER_IMAGE_NAME_HOMOLOG)
+                    app.inside {
+                        sh 'Compilado dev'
                     }
                 }
             }
