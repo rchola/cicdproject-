@@ -8,9 +8,11 @@
 		<version>2.1.6.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
+
 	<groupId>com.br.marcelosv.cicd</groupId>
 	<artifactId>cicdproject</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+
 	<name>cicdproject</name>
 	<description>Demo project for Spring Boot</description>
 
@@ -32,6 +34,7 @@
 	</dependencies>
 
 	<build>
+		<finalName>${project.artifactId}</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
