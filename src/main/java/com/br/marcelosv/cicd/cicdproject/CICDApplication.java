@@ -1,5 +1,6 @@
 package com.br.marcelosv.cicd.cicdproject;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,9 +14,15 @@ public class CICDApplication {
         SpringApplication.run(CICDApplication.class, args);
     }
 
+    @Value("${nome.ambiente}")
+    private String ambiente;
+
+    @Value("${versao.ambiente}")
+    private String versao;
+
     @GetMapping("/status")
     public String status() {
-        return "OK";
+        return "Olá, você está no ambeinte de " + ambiente + " na versão " + versao;
     }
 
 }
