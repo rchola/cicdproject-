@@ -1,0 +1,13 @@
+version: "3.3"
+
+services:
+  box-hg-gateway:
+    image: "ci-cd-project-producao:${CODE_SC_HG}"
+    ports:
+      - 8381:8080
+    environment:
+      - nome.ambiente=Produção
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
