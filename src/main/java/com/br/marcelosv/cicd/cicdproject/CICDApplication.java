@@ -24,7 +24,7 @@ public class CICDApplication {
     @ResponseBody
     @GetMapping("/status")
     public String status() {
-        return "Olá, você está no ambeinte de " + ambiente + " na versão " + versao;
+        return "Olá, você está no ambeinte de " + ambiente + " na versão " + versao + "\n";
     }
 
 }
