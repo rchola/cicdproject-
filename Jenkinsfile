@@ -14,7 +14,7 @@ pipeline {
                 sh '''
                     echo "PATH = ${PATH}"
                     echo "M2_HOME = ${M2_HOME}"
-                    echo "${branch}"
+                    echo "${env}"
                 '''
             }
         }
@@ -45,6 +45,7 @@ pipeline {
         }
         stage('Build Docker Image Homolog') {
             when {
+                beforeInput true
                 branch 'dev'
             }
             steps {
